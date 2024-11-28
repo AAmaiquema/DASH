@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/login-register.css">
+</head>
+
+<body style="display:flex; align-items:center; justify-content:center;">
+    <div class="login-page">
+        <div class="form">
+            <form class="login-form" id="loginForm" method="post" action="/login">
+                <h2>Login</h2>
+                <input type="text" name="username" id="username" placeholder="Username" required />
+                <input type="password" name="contrasena" id="contrasena" placeholder="Password" required />
+                <button type="submit" class="btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Sign in
+                </button>
+                <p class="message">Not registered? <a href="register.html">Create an account</a></p>
+            </form>
+            <div id="error-message" style="color: red; display: none;"></div> <!-- Mensaje de error -->
+        </div>
+    </div>
+    <img src="/imagenes/animal.png" alt="">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#loginForm').on('submit', function(e) {
+                e.preventDefault(); // Evitar el envío normal del formulario
+
+                $.ajax({
+                    type: 'POST',
+                    url: $(this).attr('action'),
+                    data: $(this).serialize(), // Serializar los datos del formulario
+                    success: function(response) {
+                        // Manejar la respuesta del servidor
+                        if (response.redirect) {
+                            window.location.href = response.redirect; // Redirigir si hay una respuesta de redirección
+                        } else if (response.error) {
+                            $('#error-message').text(response.error).show(); // Mostrar el mensaje de error
+                        }
+                    },
+                    error: function() {
+                        $('#error-message').text('Error en el servidor. Inténtalo de nuevo más tarde.').show();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,280 @@
+:root {
+    --text-color: #fcfcfc;
+}
+
+* {
+    padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: sans-serif;
+}
+
+body {
+    padding-top: 80px;
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    background: linear-gradient(#30142b, #2772a1);
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgb(0, 0, 0);
+    z-index: 1000;
+}
+
+nav img {
+    margin-left: 20px;
+    width: 60px;
+    height: 51px;
+}
+
+nav span i {
+    color: #fff;
+    font-size: 2.7rem;
+    cursor: pointer;
+}
+
+aside {
+    width: 200px;
+    position: fixed;
+    top: 60px; /* Ajustamos el aside para que comience debajo del nav */
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    overflow-y: hidden;
+    transform: translateX(-100%);
+    transition: 0.5s;
+    z-index: 999;
+}
+
+aside:hover {
+    overflow-y: auto;
+}
+
+.desplegar {
+    transform: translateX(0);
+}
+
+aside::-webkit-scrollbar {
+    width: 8px;
+}
+
+aside::-webkit-scrollbar-thumb {
+    background-color: #909090;
+    border-radius: 5px;
+}
+
+.container-svg {
+    padding: 10px 1px;
+    color: var(--text-color);
+}
+
+.container-svg div {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.container-svg div:hover {
+    background-color: #9260605e;
+}
+
+.container-svg div span {
+    margin-left: 15px;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+h2 {
+    padding: 10px 20px;
+    color: #aaaaaa;
+}
+
+/* Contenedor principal */
+.main-container {
+    display: flex;
+    height: 80vh; /* Reducción en altura */    
+}
+
+/* Contenedor de transmisión */
+.stream-container {
+    position: relative;
+    flex: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1a1a1a;
+    margin-right: 15px; /* Reducción en el margen */
+    border-radius: 8px; /* Reducción en el radio */
+    overflow: hidden;
+    margin-left: 16px;
+}
+
+/* Estilos de la transmisión de pantalla */
+.screen-share {
+    width: 97%; /* Reducción de tamaño */
+    height: 97%; /* Reducción de tamaño */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1a1a1a;
+    color: var(--text-color);
+    font-size: 2.4rem;
+}
+
+/* Estilos de la cámara (cuadro pequeño) */
+.camera-view {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 300px; /* Aumento de tamaño */
+    height: 200px; /* Aumento de tamaño */
+    background-color: black;
+    border: 2px solid #555;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+    font-size: 1.8rem; /* Ajuste de fuente */
+    overflow: hidden; /* Evita que el contenido se desborde */
+}
+
+.camera-view video {
+    width: 100%; /* El video ocupa todo el ancho del contenedor */
+    height: 100%; /* El video ocupa toda la altura del contenedor */
+    object-fit: cover; /* Ajusta el video para cubrir todo el contenedor sin distorsión */
+    border: none; /* Si no deseas bordes, puedes quitar esto */
+}
+
+/* Contenedor de chat */
+.chat-container {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: #222;
+    color: var(--text-color);
+    padding: 8px; /* Reducción en padding */
+    border-radius: 8px; /* Reducción en el radio */
+    overflow-y: auto;
+    margin-right: 16px; /* Distancia del borde derecho */
+
+}
+
+.button-container {
+    display: flex;
+    gap: 15px; /* Espacio entre los botones */
+    margin-left: 16px; 
+}
+
+.btn {
+    cursor: pointer;
+    padding: 10px 20px;
+    color: #289bb8;
+    font-size: 16px;
+    text-decoration: none;
+    transition: .5s;
+    margin-top: 15px;
+    letter-spacing: 2px;
+}
+  
+.btn:hover {
+    background: #289bb8;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #289bb8,
+                0 0 25px #289bb8,
+                0 0 50px #289bb8,
+                0 0 100px #289bb8;
+}
+
+.btn span {
+    position: absolute;
+    display: block;
+}
+
+.btn span:nth-child(1) {
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #289bb8);
+    animation: btn-anim1 1s linear infinite;
+}
+
+@keyframes btn-anim1 {
+    0% {
+        left: -100%;
+    }
+    50%, 100% {
+        left: 100%;
+    }
+}
+
+/* Estilo del modal */
+.modal {
+    display: none; /* Inicialmente oculto */
+    position: fixed; /* Se mantiene en la pantalla cuando se desplaza */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro con opacidad */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    position: relative;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.modal button {
+    margin: 10px;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal button:hover {
+    background-color: #0056b3;
+}
+
+.close-btn {
+    font-size: 30px; 
+    position: absolute; 
+    top: 10px; 
+    right: 10px; 
+    cursor: pointer; 
+    color: black; 
+}
+
+.close-btn:hover{
+    color: red;
+}
+
+.hidden {
+    display: none;
+}

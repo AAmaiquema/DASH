@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="/login-register.css">
+</head>
+
+<body style="display:flex; align-items:center; justify-content:center;">
+    <div class="register-page">
+        <div class="form">
+            <form class="register-form" method="post" action="/register">
+                <h2></i> Register</h2>
+                <input type="text" name="nombre" id="nombre" placeholder="Name *" required />
+                <input type="text" name="apellido" id="apellido" placeholder="Last Name *" required />
+                <input type="email" name="correo" id="correo" placeholder="Email *" required />
+                <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" placeholder="Birthday *" required />
+                <input type="text" name="username" id="username" placeholder="Username *" required />
+                <input type="password" name="contrasena" id="contrasena" placeholder="Password *" required />
+                <button type="submit" class="btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Create
+                </button>
+                <div class="loader" id="loader"></div>
+                <p id="loading-text" style="display:none;">Cargando...</p>
+                <p class="message">Already registered? <a href="/">Sign In</a></p>
+            </form>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Intercepta el envío del formulario
+            $('form.register-form').on('submit', function (e) {
+                e.preventDefault(); // Evita el envío predeterminado del formulario
+    
+                // Mostrar el loader, el texto de "Cargando..." y deshabilitar el botón
+                $('#loader').css('display', 'block');
+                $('#loading-text').text('Cargando...').css('display', 'block'); // Mostrar 'Cargando...'
+                $('.btn').addClass('disable-button');
+    
+                // Enviar el formulario con AJAX
+                var formData = $(this).serialize();
+                $.ajax({
+                    url: $(this).attr('action'),
+                    type: 'POST',
+                    data: formData,
+                    success: function (response) {
+                        // Aquí se maneja el éxito
+                        $('#loader').css('display', 'none');
+                        $('#loading-text').text('Guardado').css('display', 'block'); // Cambiar el texto a 'Guardado'
+    
+                        // Limpiar los campos del formulario
+                        $('form.register-form')[0].reset();
+                        
+                        // Habilitar el botón nuevamente después de unos segundos
+                        setTimeout(function () {
+                            $('#loading-text').css('display', 'none');
+                            $('.btn').removeClass('disable-button');
+                        }, 2000); // Ocultar el mensaje "Guardado" después de 2 segundos
+                    },
+                    error: function (error) {
+                        // Manejar errores
+                        $('#loader').css('display', 'none');
+                        $('#loading-text').text('Error').css('display', 'block'); // Mostrar 'Error' en vez de 'Cargando...'
+                        $('.btn').removeClass('disable-button');
+                    }
+                });
+            });
+        });
+    </script>  
+    
+</body>
+
+</html>

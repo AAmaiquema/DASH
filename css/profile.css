@@ -1,0 +1,216 @@
+body {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background: linear-gradient(#30142b, #2772a1);
+    overflow-x: hidden;
+}
+
+.ui-w-80 {
+    width : 80px !important;
+    height: auto;
+}
+
+label.btn {
+    margin-bottom: 0;
+}
+
+.btn-outline-primary {
+    border-color: #26B4FF;
+    background  : transparent;
+    color       : #26B4FF;
+}
+
+.btn {
+    cursor: pointer;
+}
+
+.text-light {
+    color: #babbbc !important;
+}
+
+.card {
+    background-clip: padding-box;
+    box-shadow     : 0 1px 4px rgba(214, 59, 21, 0.012);
+}
+
+.row-bordered {
+    overflow: hidden;
+}
+
+.account-settings-fileinput {
+    position  : absolute;
+    visibility: hidden;
+    width     : 1px;
+    height    : 1px;
+    opacity   : 0;
+}
+
+.account-settings-links .list-group-item.active {
+    font-weight: bold !important;
+}
+
+html:not(.dark-style) .account-settings-links .list-group-item.active {
+    background: transparent !important;
+}
+
+.account-settings-multiselect~.select2-container {
+    width: 100% !important;
+}
+
+.light-style .account-settings-links .list-group-item {
+    padding     : 0.85rem 1.5rem;
+    border-color: rgba(24, 28, 33, 0.03) !important;
+}
+
+.light-style .account-settings-links .list-group-item.active {
+    color: #4e5155 !important;
+}
+
+.material-style .account-settings-links .list-group-item {
+    padding     : 0.85rem 1.5rem;
+    border-color: rgba(24, 28, 33, 0.03) !important;
+}
+
+.material-style .account-settings-links .list-group-item.active {
+    color: #4e5155 !important;
+}
+
+.dark-style .account-settings-links .list-group-item {
+    padding     : 0.85rem 1.5rem;
+    border-color: rgba(255, 255, 255, 0.03) !important;
+}
+
+.dark-style .account-settings-links .list-group-item.active {
+    color: #fff !important;
+}
+
+.light-style .account-settings-links .list-group-item.active {
+    color: #4E5155 !important;
+}
+
+.light-style .account-settings-links .list-group-item {
+    padding     : 0.85rem 1.5rem;
+    border-color: rgba(24, 28, 33, 0.03) !important;
+}
+
+.custom-select {
+    width: 250px; /* Ancho del select */
+    height: 36px; /* Altura del select */
+    font-size: 14px; /* Tamaño de fuente */
+    border: 1px solid #ccc; /* Color del borde */
+    border-radius: 4px; /* Bordes redondeados */
+    padding: 5px; /* Espaciado interno */
+    appearance: none; /* Elimina el estilo predeterminado del navegador */
+}
+
+.custom-select:focus {
+    border-color: #007bff; /* Color del borde al enfocar */
+    outline: none; /* Elimina el contorno por defecto */
+}
+
+.container.light-style {
+    padding-top: 80px;  /* Ajusta el valor para mover hacia abajo */
+    padding-left: 80px;  /* Ajusta el valor para mover hacia la derecha */
+}
+
+
+
+
+
+
+
+
+:root {
+    --text-color: #fcfcfc;
+}
+
+* {
+    padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+
+nav {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgb(0, 0, 0);
+    z-index: 1000;
+}
+
+nav img {
+    margin-left: 20px;
+    width: 60px;
+    height: 51px;
+}
+
+nav span i {
+    color: #fff;
+    font-size: 2.7rem;
+    cursor: pointer;
+}
+
+aside {
+    width: 200px;
+    position: fixed;
+    top: 60px; /* Ajustamos el aside para que comience debajo del nav */
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    overflow-y: hidden;
+    transition: 0.5s;
+    z-index: 999;
+}
+
+aside:hover {
+    overflow-y: auto;
+}
+
+.desplegar {
+    transform: translateX(-100%);
+}
+
+aside::-webkit-scrollbar {
+    width: 8px;
+}
+
+aside::-webkit-scrollbar-thumb {
+    background-color: #909090;
+    border-radius: 5px;
+}
+
+.container-svg {
+    padding: 10px 1px;
+    color: var(--text-color);
+}
+
+.container-svg div {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.container-svg div:hover {
+    background-color: #9260605e;
+}
+
+.container-svg div span {
+    margin-left: 15px;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+h2 {
+    padding: 10px 20px;
+    color: #aaaaaa;
+}
+
+
